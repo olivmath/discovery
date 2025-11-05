@@ -1,0 +1,8 @@
+{
+  "name": "stablecoin-discovery-form",
+  "version": "1.0.0",
+  "description": "Interactive questionnaire form for stablecoin issuers",
+  "private": true,
+  "author": "",
+  "license": "MIT"
+}
