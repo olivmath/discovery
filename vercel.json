@@ -1,6 +1,4 @@
 {
-  "buildCommand": "true",
-  "outputDirectory": ".",
-  "framework": "static",
-  "cleanUrls": false
+  "buildCommand": "echo 'No build required'",
+  "outputDirectory": "."
 }
