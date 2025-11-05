@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stablecoin Issuers - Discovery Questionnaire</title>
     <style>
+        :root {
+            color-scheme: dark light;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,21 +17,23 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            color: #e0e0e0;
         }
 
         .container {
-            background: white;
+            background: #0f3460;
             border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             max-width: 600px;
             width: 100%;
             padding: 40px;
+            border: 1px solid #1a4d7a;
         }
 
         .header {
@@ -37,12 +43,12 @@
 
         .header h1 {
             font-size: 24px;
-            color: #333;
+            color: #ffffff;
             margin-bottom: 8px;
         }
 
         .header p {
-            color: #666;
+            color: #b0b0b0;
             font-size: 14px;
         }
 
@@ -56,28 +62,28 @@
             justify-content: space-between;
             margin-bottom: 8px;
             font-size: 14px;
-            color: #666;
+            color: #b0b0b0;
         }
 
         .progress-bar {
             width: 100%;
             height: 8px;
-            background: #e0e0e0;
+            background: #1a4d7a;
             border-radius: 10px;
             overflow: hidden;
         }
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(90deg, #00d4ff 0%, #0099ff 100%);
             border-radius: 10px;
             transition: width 0.3s ease;
         }
 
         .part-badge {
             display: inline-block;
-            background: #f0f0f0;
-            color: #667eea;
+            background: #1a4d7a;
+            color: #00d4ff;
             padding: 4px 12px;
             border-radius: 20px;
             font-size: 12px;
@@ -93,7 +99,7 @@
         .question-label {
             font-size: 16px;
             font-weight: 600;
-            color: #333;
+            color: #ffffff;
             margin-bottom: 12px;
         }
 
@@ -101,19 +107,25 @@
         textarea {
             width: 100%;
             padding: 12px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid #1a4d7a;
             border-radius: 6px;
             font-size: 14px;
             font-family: inherit;
             resize: vertical;
             min-height: 80px;
             transition: border-color 0.3s;
+            background: #1a3a52;
+            color: #e0e0e0;
+        }
+
+        textarea::placeholder {
+            color: #707070;
         }
 
         textarea:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #00d4ff;
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
         }
 
         input[type="text"],
@@ -121,19 +133,26 @@
         select {
             width: 100%;
             padding: 12px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid #1a4d7a;
             border-radius: 6px;
             font-size: 14px;
             font-family: inherit;
             transition: border-color 0.3s;
+            background: #1a3a52;
+            color: #e0e0e0;
+        }
+
+        input[type="text"]::placeholder,
+        input[type="number"]::placeholder {
+            color: #707070;
         }
 
         input[type="text"]:focus,
         input[type="number"]:focus,
         select:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #00d4ff;
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
         }
 
         .options-group {
@@ -151,30 +170,32 @@
         }
 
         .option-item:hover {
-            background: #f5f5f5;
+            background: #1a4d7a;
         }
 
         .option-item input[type="radio"],
         .option-item input[type="checkbox"] {
             margin-right: 10px;
             cursor: pointer;
+            accent-color: #00d4ff;
         }
 
         .option-item label {
             cursor: pointer;
             flex: 1;
+            color: #e0e0e0;
         }
 
         /* Validação */
         .error-message {
-            color: #d32f2f;
+            color: #ff6b6b;
             font-size: 12px;
             margin-top: 8px;
             display: none;
         }
 
         .field-error {
-            border-color: #d32f2f !important;
+            border-color: #ff6b6b !important;
         }
 
         .field-error ~ .error-message {
@@ -200,12 +221,12 @@
         }
 
         .btn-secondary {
-            background: #e0e0e0;
-            color: #333;
+            background: #1a4d7a;
+            color: #e0e0e0;
         }
 
         .btn-secondary:hover:not(:disabled) {
-            background: #d0d0d0;
+            background: #2a6da0;
         }
 
         .btn-secondary:disabled {
@@ -214,14 +235,15 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            color: #0f3460;
             flex: 1;
+            font-weight: 700;
         }
 
         .btn-primary:hover:not(:disabled) {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
         }
 
         /* Tela de Sucesso */
@@ -235,44 +257,51 @@
         }
 
         .success-icon {
-            font-size: 60px;
+            font-size: 80px;
             margin-bottom: 20px;
+            animation: bounce 0.6s ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
 
         .success-screen h2 {
             font-size: 28px;
-            color: #333;
+            color: #ffffff;
             margin-bottom: 12px;
         }
 
         .success-screen p {
-            color: #666;
+            color: #b0b0b0;
             font-size: 16px;
             margin-bottom: 30px;
             line-height: 1.5;
         }
 
         .btn-download {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            color: #0f3460;
             padding: 14px 32px;
             font-size: 16px;
             margin-bottom: 12px;
+            font-weight: 700;
         }
 
         .btn-download:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
         }
 
         .btn-restart {
-            background: #e0e0e0;
-            color: #333;
+            background: #1a4d7a;
+            color: #e0e0e0;
             padding: 12px 24px;
         }
 
         .btn-restart:hover {
-            background: #d0d0d0;
+            background: #2a6da0;
         }
 
         /* Responsivo */
@@ -789,7 +818,7 @@
             updateProgressBar();
         }
 
-        // ====== LOCALSTORA ======
+        // ====== LOCALSTORAGE ======
         function loadFromLocalStorage() {
             const saved = localStorage.getItem("stablecoinAnswers");
             const savedIndex = localStorage.getItem("stablecoinIndex");
@@ -971,26 +1000,48 @@
 
         // ====== DOWNLOAD CSV ======
         function downloadCSV() {
-            let csv = "Pergunta,Resposta\n";
+            try {
+                // Cabeçalho com separação clara
+                let csv = "Stablecoin Discovery Questionnaire - Respostas\n";
+                csv += `Data de Preenchimento,${new Date().toLocaleString('pt-BR')}\n\n`;
+                csv += "Pergunta,Resposta\n";
 
-            questions.forEach(q => {
-                const answer = answers[q.id] || "";
-                const answerStr = Array.isArray(answer) ? answer.join("; ") : answer;
-                const escapedQuestion = `"${q.question.replace(/"/g, '""')}"`;
-                const escapedAnswer = `"${answerStr.replace(/"/g, '""')}"`;
-                csv += `${escapedQuestion},${escapedAnswer}\n`;
-            });
+                // Adicionar todas as respostas
+                questions.forEach(q => {
+                    const answer = answers[q.id] || "(Não respondida)";
+                    const answerStr = Array.isArray(answer) ? answer.join("; ") : answer;
 
-            const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-            const link = document.createElement("a");
-            const url = URL.createObjectURL(blob);
+                    // Escapar aspas duplas para CSV
+                    const escapedQuestion = `"${q.question.replace(/"/g, '""')}"`;
+                    const escapedAnswer = `"${answerStr.replace(/"/g, '""')}"`;
 
-            link.setAttribute("href", url);
-            link.setAttribute("download", "stablecoin-responses.csv");
-            link.style.visibility = "hidden";
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+                    csv += `${escapedQuestion},${escapedAnswer}\n`;
+                });
+
+                // Criar blob e download
+                const BOM = '\uFEFF'; // UTF-8 BOM para Excel abrir corretamente
+                const blob = new Blob([BOM + csv], {
+                    type: "text/csv;charset=utf-8;"
+                });
+
+                const link = document.createElement("a");
+                const url = URL.createObjectURL(blob);
+
+                link.setAttribute("href", url);
+                link.setAttribute("download", `stablecoin-respostas-${new Date().getTime()}.csv`);
+                link.style.visibility = "hidden";
+
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                // Liberar memória
+                URL.revokeObjectURL(url);
+
+            } catch (error) {
+                console.error("Erro ao gerar CSV:", error);
+                alert("Erro ao baixar o arquivo. Tente novamente.");
+            }
         }
 
         // ====== REINICIAR ======
