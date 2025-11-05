@@ -645,9 +645,8 @@ export default function Home() {
                           checked={Array.isArray(answers[currentQuestion.id]) &&
                                    answers[currentQuestion.id].includes(option)}
                           onChange={(e) => {
-                            const current = Array.isArray(answers[currentQuestion.id])
-                              ? answers[currentQuestion.id]
-                              : [];
+                            const currentAnswer = answers[currentQuestion.id];
+                            const current = Array.isArray(currentAnswer) ? currentAnswer : [];
                             const updated = e.target.checked
                               ? [...current, option]
                               : current.filter(v => v !== option);
